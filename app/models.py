@@ -1,3 +1,14 @@
+class Question:
+    def __init__(self, description, options, correct_answer):
+        self.description = description  # Descripción de la pregunta
+        self.options = options  # Opciones de respuesta
+        self.correct_answer = correct_answer  # Respuesta correcta
+
+    def is_correct(self, answer):
+        """Verifica si la respuesta dada es correcta"""
+        return self.correct_answer == answer
+
+
 class Quiz:
     def __init__(self):
         self.questions = []  # Lista de preguntas
