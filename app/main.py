@@ -10,9 +10,9 @@ def run_quiz():
     quiz = Quiz()
 
     # Cargar preguntas de ejemplo (pueden ser cargadas desde una base de datos en una versión más avanzada)
-    question1 = Question("Cuánto es 2 + 2?", ["1", "2", "3", "4"], "4")
-    question2 = Question("Cuál es la capital de Francia?", ["Berlín", "Londres", "París", "Madrid"], "París")
-    question3 = Question("Cuál es el planeta más grande?", ["Tierra", "Marte", "Júpiter", "Saturno"], "Júpiter")
+    question1 = Question("What is 2 + 2?", ["1", "2", "3", "4"], "4")
+    question2 = Question("What is the capital of France?", ["Berlin", "London", "Paris", "Madrid"], "Paris")
+    question3 = Question("What is the largest planet?", ["Earth", "Mars", "Jupiter", "Saturn"], "Jupiter")
 
     # Agregar preguntas al Quiz
     quiz.add_question(question1)
