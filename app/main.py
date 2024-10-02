@@ -33,7 +33,20 @@ def run_quiz():
                 print("\033[91mIncorrecto.\033[0m")  # Mensaje en rojo para incorrecto
         else:
             break
+    
+    # Mostrar resultados al final del juego
+    print("\033[1m\nJuego terminado.\033[0m")
+    print(f"\033[96mPreguntas contestadas: {quiz.current_question_index}\033[0m")
+    print(f"\033[92mRespuestas correctas: {quiz.correct_answers}\033[0m")
+    print(f"\033[91mRespuestas incorrectas: {quiz.incorrect_answers}\033[0m\n")
 
+    # Resumen detallado de respuestas correctas e incorrectas
+    print("\033[1mResumen de respuestas:\033[0m")
+    for idx, question in enumerate(quiz.questions):
+        # Mostrar si la respuesta fue correcta o incorrecta para cada pregunta
+        correct_or_not = "Correcto" if question.is_correct(answer) else "Incorrecto"
+        color = "\033[92m" if correct_or_not == "Correcto" else "\033[91m"  # Verde para correcto, rojo para incorrecto
+        print(f"Pregunta {idx + 1}: {question.description} - {color}{correct_or_not}\033[0m")
 
 # Ejecutar el juego si este archivo es el principal
 if __name__ == "__main__":
