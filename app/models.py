@@ -8,7 +8,6 @@ class Question:
         # Comparar como strings para evitar diferencias de tipo
         return str(answer).strip() == self.correct_answer
 
-
 class Quiz:
     def __init__(self):
         self.questions = []  # Lista de preguntas

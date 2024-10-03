@@ -1,4 +1,4 @@
-from ..app.models import Quiz, Question
+from app.models import Quiz, Question
 
 def test_quiz_difficulty_increase():
     # Prueba para verificar que la dificultad cambia a "Difícil" después de 3 respuestas correctas
