@@ -74,6 +74,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: https://sonarcloud.io
+          SONAR_SCANNER_OPTS: "-Djava.version=17"  # Se añade esta opción para forzar a usar Java 17
         with:
           args: >
             -Dsonar.projectKey=tarea1-cc3s2 
