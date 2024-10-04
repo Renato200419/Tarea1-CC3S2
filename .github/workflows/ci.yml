@@ -80,7 +80,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: https://sonarcloud.io
           SONAR_SCANNER_OPTS: "-Djava.version=17 -Dsonar.java.jdkHome=$JAVA_HOME"
-          JAVA_HOME: "/usr/lib/jvm/java-17-openjdk-amd64"  # Establecer JAVA_HOME para Java 17
         with:
           args: >
             -Dsonar.projectKey=tarea1-cc3s2
