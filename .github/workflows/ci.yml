@@ -77,7 +77,7 @@ jobs:
       - name: Set JAVA_HOME for SonarQube
         run: echo "JAVA_HOME=/usr/lib/jvm/adoptopenjdk-17-hotspot" >> $GITHUB_ENV
 
-      - name: Set up SonarQube Scanner  # Forzar a usar SonarQube Scanner compatible con Java 17
+      - name: Install SonarQube Scanner  # Descargar e instalar SonarQube Scanner compatible con Java 17
         run: |
           curl -Lo sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip
           unzip sonar-scanner-cli.zip
@@ -85,9 +85,14 @@ jobs:
           echo "SONAR_SCANNER_HOME=$GITHUB_WORKSPACE/sonar-scanner" >> $GITHUB_ENV
           echo "$SONAR_SCANNER_HOME/bin" >> $GITHUB_PATH
 
+      - name: Verify SonarScanner Installation
+        run: |
+          echo "Verificando instalación de SonarScanner..."
+          sonar-scanner --version
+
       - name: SonarQube Scan
         run: |
-          sonar-scanner \
+          $SONAR_SCANNER_HOME/bin/sonar-scanner \
           -Dsonar.projectKey=tarea1-cc3s2 \
           -Dsonar.organization=renato200419 \
           -Dsonar.sources=. \
