@@ -74,6 +74,9 @@ jobs:
           java -version
           echo "JAVA_HOME: $JAVA_HOME"
 
+      - name: Set JAVA_HOME for SonarQube
+        run: echo "JAVA_HOME=${{ env.JAVA_HOME }}" >> $GITHUB_ENV
+
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@v1
         env:
