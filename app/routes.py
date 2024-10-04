@@ -23,7 +23,7 @@ def read_root():
     return {"message": "Bienvenido a la API del juego Trivia"}
 
 
-@app.post("/questions/")
+@app.post("/questions/", status_code=201)  # Añadir status_code=201 para retornar el código correcto
 def create_question(question: QuestionCreate):
     # Crear una nueva pregunta y agregarla a la base de datos en memoria
     new_question = Question(question.description, question.options, question.correct_answer)
