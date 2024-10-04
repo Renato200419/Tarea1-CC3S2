@@ -1,6 +1,7 @@
+# tests/integration/test_questions_integration.py
 import httpx
 from fastapi.testclient import TestClient
-from ..app.main import app  # Esta línea ajusta esta importación si `main.py` está en otra ubicación
+from app.routes import app  # Importar `app` desde `app.routes` en lugar de `app.main`
 
 # Crear un cliente de pruebas para la aplicación FastAPI
 client = TestClient(app)
