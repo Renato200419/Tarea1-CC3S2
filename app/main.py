@@ -1,5 +1,4 @@
-# app/main.py
-from .models import Quiz, Question 
+from models import Quiz, Question
 
 def run_quiz():
     # Mensaje de bienvenida y explicación
