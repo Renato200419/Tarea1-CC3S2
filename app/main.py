@@ -1,3 +1,4 @@
+# app/main.py
 from models import Quiz, Question
 
 def run_quiz():
@@ -22,7 +23,7 @@ def run_quiz():
     while quiz.current_question_index < len(quiz.questions):
         question = quiz.get_next_question()
         if question:
-            print(f"\033[1m\nPregunta {quiz.current_question_index + 1}: {question.description}\033[0m")
+            print(f"\033[1m\nPregunta {quiz.current_question_index}: {question.description}\033[0m")
             for idx, option in enumerate(question.options):
                 print(f"  {idx + 1}. {option}")
             answer = input("Tu respuesta (ingresa el número de la opción): ")
