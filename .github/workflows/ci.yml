@@ -64,7 +64,7 @@ jobs:
         with:
           fetch-depth: 0  # Desactivar clonaciones superficiales para mejorar la relevancia del análisis
 
-      - name: Set up JDK 17  # Configurar Java 17 para la compatibilidad con SonarQube.
+      - name: Set up JDK 17  # Configurar Java 17 para la compatibilidad con SonarQube
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
