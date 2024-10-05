@@ -70,18 +70,29 @@ jobs:
           SONAR_HOST_URL: https://sonarcloud.io
           SONAR_LOGIN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          sonar-scanner \
-          -Dsonar.projectKey=tarea1-cc3s2 \
-          -Dsonar.organization=renato200419 \
-          -Dsonar.sources=. \
-          -Dsonar.host.url=$SONAR_HOST_URL \
-          -Dsonar.login=$SONAR_LOGIN \
-          -Dsonar.branch.name=${{ github.head_ref || github.ref_name }} \
-          -Dsonar.pullrequest.key=${{ github.event.pull_request.number || github.run_id }} \
-          -Dsonar.pullrequest.branch=${{ github.head_ref }} \
-          -Dsonar.pullrequest.base=${{ github.base_ref }} \
-          -Dsonar.pullrequest.github.repository=${{ github.repository }} \
-          -Dsonar.pullrequest.provider=GitHub
+          if [[ -n "${{ github.event.pull_request.number }}" ]]; then
+            echo "Running SonarQube scan for Pull Request"
+            sonar-scanner \
+            -Dsonar.projectKey=tarea1-cc3s2 \
+            -Dsonar.organization=renato200419 \
+            -Dsonar.sources=. \
+            -Dsonar.host.url=$SONAR_HOST_URL \
+            -Dsonar.login=$SONAR_LOGIN \
+            -Dsonar.pullrequest.key=${{ github.event.pull_request.number }} \
+            -Dsonar.pullrequest.branch=${{ github.head_ref }} \
+            -Dsonar.pullrequest.base=${{ github.base_ref }} \
+            -Dsonar.pullrequest.github.repository=${{ github.repository }} \
+            -Dsonar.pullrequest.provider=GitHub
+          else
+            echo "Running SonarQube scan for Branch"
+            sonar-scanner \
+            -Dsonar.projectKey=tarea1-cc3s2 \
+            -Dsonar.organization=renato200419 \
+            -Dsonar.sources=. \
+            -Dsonar.host.url=$SONAR_HOST_URL \
+            -Dsonar.login=$SONAR_LOGIN \
+            -Dsonar.branch.name=${{ github.ref_name }}
+          fi
 
 
 
