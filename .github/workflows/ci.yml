@@ -59,7 +59,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: integration-tests
     container:
-      image: sonarsource/sonar-scanner-cli:latest  # Usar contenedor preconfigurado con sonar-scanner
+      image: sonarsource/sonar-scanner-cli:latest
       options: --user root  # Ejecutar el contenedor como root para evitar problemas de permisos
     steps:
       - name: Check out code
@@ -75,7 +75,9 @@ jobs:
           -Dsonar.organization=renato200419 \
           -Dsonar.sources=. \
           -Dsonar.host.url=$SONAR_HOST_URL \
-          -Dsonar.login=$SONAR_LOGIN
+          -Dsonar.login=$SONAR_LOGIN \
+          -Dsonar.branch.name=main
+
 
 
   # Job para construcción de la imagen Docker y despliegue en staging
