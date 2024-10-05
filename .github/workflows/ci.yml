@@ -106,8 +106,11 @@ jobs:
           docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/trivia-game-python .
           docker push ${{ secrets.DOCKER_HUB_USERNAME }}/trivia-game-python
 
-      - name: Deploy to Staging
-        env:
-          SSH_KEY: ${{ secrets.SSH_KEY }}  # Clave SSH para conectarse al servidor de staging
+      - name: Verify SSH key format
         run: |
-          ssh -o StrictHostKeyChecking=no -i $SSH_KEY user@staging-server "docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/trivia-game-python && docker run -d -p 8000:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/trivia-game-python"
+          head -n 2 ssh_key  
+          tail -n 2 ssh_key 
+    
+      - name: Deploy to Staging
+        run: |
+         ssh -o StrictHostKeyChecking=no -i ssh_key user@staging-server "docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/trivia-game-python && docker run -d -p 8000:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/trivia-game-python"
