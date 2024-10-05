@@ -78,7 +78,7 @@ jobs:
         with:
           args: >
             -Dsonar.projectKey=Tarea1-CC3S2
-            -Dsonar.organization=renato200419
+            -Dsonar.organization=Renato200419_Tarea1-CC3S2
             -Dsonar.sources=.
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
