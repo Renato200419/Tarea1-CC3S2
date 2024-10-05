@@ -121,5 +121,5 @@ jobs:
       # Usar el archivo 'ssh_key' en el comando SSH
       - name: Deploy to Staging
         run: |
-          ssh -o StrictHostKeyChecking=no -i ssh_key renato@209.45.19.3 "docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/trivia-game-python && docker run -d -p 8000:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/trivia-game-python"
+          ssh -o StrictHostKeyChecking=no -i ssh_key -p 2222 renato@209.45.19.3 "docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/trivia-game-python && docker run -d -p 8000:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/trivia-game-python"
 
