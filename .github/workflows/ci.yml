@@ -77,8 +77,8 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
           args: >
-            -Dsonar.projectKey=Tarea1-CC3S2
-            -Dsonar.organization=Renato200419_Tarea1-CC3S2
+            -Dsonar.projectKey=Renato200419_Tarea1-CC3S2
+            -Dsonar.organization=renato200419
             -Dsonar.sources=.
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
