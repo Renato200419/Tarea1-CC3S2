@@ -61,35 +61,35 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v2
-
+  
       - name: Set up Java 17  # Configurar la versión de Java a 17
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'  # Distribución de Java adoptopenjdk
           java-version: '17'     # Establecer Java 17
-
+  
       - name: Verify Java Version
         run: |
           echo "Verificando versión de Java..."
           java -version
           echo "JAVA_HOME: $JAVA_HOME"
-
+  
       - name: Set JAVA_HOME for SonarQube
         run: echo "JAVA_HOME=/usr/lib/jvm/adoptopenjdk-17-hotspot" >> $GITHUB_ENV
-
+  
       - name: Install SonarQube Scanner  # Descargar e instalar SonarQube Scanner compatible con Java 17
         run: |
           curl -Lo sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip
           unzip sonar-scanner-cli.zip
           mv sonar-scanner-4.8.0.2856-linux sonar-scanner
           echo "SONAR_SCANNER_HOME=$GITHUB_WORKSPACE/sonar-scanner" >> $GITHUB_ENV
-          echo "$SONAR_SCANNER_HOME/bin" >> $GITHUB_PATH
-
+          echo "$GITHUB_WORKSPACE/sonar-scanner/bin" >> $GITHUB_PATH
+  
       - name: Verify SonarScanner Installation
         run: |
           echo "Verificando instalación de SonarScanner..."
           sonar-scanner --version
-
+  
       - name: SonarQube Scan
         run: |
           $SONAR_SCANNER_HOME/bin/sonar-scanner \
