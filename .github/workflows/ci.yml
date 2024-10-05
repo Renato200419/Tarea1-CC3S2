@@ -78,12 +78,14 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}  # Usar la variable SONAR_HOST_URL de GitHub Secrets
         with:
           args: >
+            -Dsonar.projectKey=tarea1-cc3s2
+            -Dsonar.organization=renato200419
             -Dsonar.projectKey=trivia-game-python
             -Dsonar.sources=.
+            -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
             -Dsonar.java.source=17
-
-
+            
   # Job para construcción de la imagen Docker y despliegue en staging
   deploy:
     runs-on: ubuntu-latest
