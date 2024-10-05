@@ -87,7 +87,7 @@ jobs:
   # Job para construcción de la imagen Docker y despliegue en staging
   deploy:
     runs-on: ubuntu-latest
-    needs: sonar  # Se ejecuta después del análisis de SonarCloud
+    needs: sonarqube  # Se ejecuta después del análisis de SonarCloud
     steps:
       - name: Check out code
         uses: actions/checkout@v2
