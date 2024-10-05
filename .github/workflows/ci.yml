@@ -75,12 +75,11 @@ jobs:
         uses: sonarsource/sonarqube-scan-action@v2.1.0
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}  # Usar la variable SONAR_HOST_URL de GitHub Secrets
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
           args: >
-            -Dsonar.projectKey=tarea1-cc3s2
+            -Dsonar.projectKey=Tarea1-CC3S2
             -Dsonar.organization=renato200419
-            -Dsonar.projectKey=trivia-game-python
             -Dsonar.sources=.
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
