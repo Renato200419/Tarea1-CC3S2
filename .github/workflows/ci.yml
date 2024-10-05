@@ -77,13 +77,16 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
-          args: >
-            -Dsonar.projectKey=Tarea1-CC3S2
-            -Dsonar.organization=renato200419
-            -Dsonar.sources=.
-            -Dsonar.host.url=https://sonarcloud.io
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-            -Dsonar.java.source=17
+           args: >
+             -Dsonar.projectKey=Tarea1-CC3S2
+             -Dsonar.organization=renato200419
+             -Dsonar.sources=.
+             -Dsonar.host.url=https://sonarcloud.io
+             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+             -Dsonar.java.source=17
+             -Dsonar.branch.name=${{ github.head_ref }}
+             -Dsonar.pullrequest.key=${{ github.event.pull_request.number }}
+             -Dsonar.pullrequest.base=main # Rama base para la PR
             
   # Job para construcción de la imagen Docker y despliegue en staging
   deploy:
