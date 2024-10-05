@@ -60,6 +60,7 @@ jobs:
     needs: integration-tests
     container:
       image: sonarsource/sonar-scanner-cli:latest  # Usar contenedor preconfigurado con sonar-scanner
+      options: --user root  # Ejecutar el contenedor como root para evitar problemas de permisos
     steps:
       - name: Check out code
         uses: actions/checkout@v2
