@@ -76,7 +76,12 @@ jobs:
           -Dsonar.sources=. \
           -Dsonar.host.url=$SONAR_HOST_URL \
           -Dsonar.login=$SONAR_LOGIN \
-          -Dsonar.branch.name=main
+          -Dsonar.branch.name=${{ github.head_ref || github.ref_name }} \
+          -Dsonar.pullrequest.key=${{ github.event.pull_request.number || github.run_id }} \
+          -Dsonar.pullrequest.branch=${{ github.head_ref }} \
+          -Dsonar.pullrequest.base=${{ github.base_ref }} \
+          -Dsonar.pullrequest.github.repository=${{ github.repository }} \
+          -Dsonar.pullrequest.provider=GitHub
 
 
 
